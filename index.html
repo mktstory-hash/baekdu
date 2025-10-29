@@ -1,47 +1,279 @@
-<script>
-  // ===== YouTube 최신 영상 불러오기 (프록시 사용) =====
-  const PROXY_BASE = "/api"; // Netlify: "/api" / CloudflareWorkers: "https://<worker>.workers.dev"
-  const CHANNEL_ID = "UCxxxxxxxxxxxxxxxx"; // @choshaaaa 채널의 실제 ID
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>(사)백두한라협회 | Baekdu–Halla Association</title>
+<meta name="description" content="북한이탈주민의 자립·역량강화 및 지역사회 화합을 위한 (사)백두한라협회 공식 원페이지 홈페이지" />
+<meta name="color-scheme" content="light dark" />
+<style>
+  :root{--bg:#fff;--fg:#111827;--muted:#6b7280;--card:#fff;--line:#e5e7eb;--accent:#111827;--shadow:0 1px 2px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.1)}
+  @media (prefers-color-scheme: dark){:root{--bg:#0b0c10;--fg:#e5e7eb;--muted:#9ca3af;--card:#0f1117;--line:#1f2937;--accent:#e5e7eb}}
+  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Noto Sans KR,sans-serif}
+  a{color:inherit} .container{max-width:1120px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-block;padding:.6rem 1rem;border-radius:999px;border:1px solid var(--line);text-decoration:none}
+  .btn.primary{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  header.sticky{position:sticky;top:0;backdrop-filter:saturate(1.8) blur(6px);background:color-mix(in oklab,var(--bg) 90%,transparent)}
+  nav a{padding:.25rem .5rem;border-radius:10px} nav a:hover{background:var(--line)}
+  .grid{display:grid;gap:24px}.grid-2{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}
+  @media(min-width:860px){.grid-2{grid-template-columns:1.2fr .8fr}.grid-3{grid-template-columns:repeat(3,1fr)}}
+  h1,h2,h3{line-height:1.25;margin:0} h2{font-size:32px} h3{font-size:22px} .muted{color:var(--muted)}
+  .pill{display:inline-block;padding:.25rem .6rem;border-radius:999px;background:var(--fg);color:var(--bg);font-weight:600}
+  .hero{padding:64px 0;position:relative;overflow:hidden}
+  .hero .bgimg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;opacity:.15}
+  .hero .overlay{position:relative}
+  .section{padding:64px 0;border-top:1px solid var(--line)}
+  .gallery{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)} .gallery img{width:100%;height:120px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+  @media(max-width:720px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  .post-list{display:grid;gap:12px} .post{padding:12px;border:1px solid var(--line);border-radius:12px}
+</style>
+</head>
+<body>
+<header class="sticky">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:12px;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-weight:800">BH</div>
+      <span style="font-weight:700">사단법인 백두한라협회</span>
+    </div>
+    <nav style="display:flex;gap:14px">
+      <a href="#about">협회 소개</a><a href="#mission">설립취지·목적</a><a href="#programs">주요 사업</a>
+      <a href="#media">영상·홍보자료</a><a href="#donation">기부 정보</a><a href="#contact">연락처</a>
+    </nav>
+  </div>
+</header>
 
-  async function loadLatestYouTubeViaProxy() {
+<main id="main">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="bgimg"></div>
+    <div class="overlay">
+      <div class="container grid grid-2" style="align-items:center">
+        <div>
+          <h2>북한이탈주민과 지역사회가 함께 여는 <span class="pill">자립·화합</span></h2>
+          <p class="muted" style="margin-top:12px">백두에서 한라까지, 남과 북을 잇는 교량으로서 북한이탈주민의 자립과 역량강화, 지역사회 참여와 화합을 촉진합니다.</p>
+          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn primary" href="#mission">설립취지 보기</a><a class="btn" href="#programs">사업 살펴보기</a>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="padding:20px">
+            <h3>핵심 가치</h3>
+            <div style="margin-top:12px;display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))">
+              <div class="card" style="padding:12px"><strong>자립(IL)</strong> 촉진</div>
+              <div class="card" style="padding:12px"><strong>권익</strong> 옹호</div>
+              <div class="card" style="padding:12px"><strong>역량</strong> 강화</div>
+              <div class="card" style="padding:12px"><strong>지역사회</strong> 화합</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 소개 -->
+  <section id="about" class="section">
+    <div class="container grid grid-2">
+      <div>
+        <h3>협회 소개</h3>
+        <p class="muted" style="margin-top:10px">(사)백두한라협회는 북한이탈주민이 지역사회에서 자립적으로 생활하고 당당한 시민으로 성장할 수 있도록 교육·상담·문화·일자리 연계 등 다양한 프로그램을 운영하는 비영리 민간단체입니다.</p>
+        <div class="gallery" style="margin-top:14px">
+          <img src="https://images.unsplash.com/photo-1520975898057-3b1c9d0d0b82?q=80&w=800&auto=format&fit=crop" alt="지역 봉사활동(예시)">
+          <img src="https://images.unsplash.com/photo-1515165562835-c3b8c8a0b4be?q=80&w=800&auto=format&fit=crop" alt="교육 프로그램(예시)">
+          <img src="https://images.unsplash.com/photo-1515162305286-9cf0a3b0b0f0?q=80&w=800&auto=format&fit=crop" alt="문화 교류 행사(예시)">
+        </div>
+      </div>
+      <aside>
+        <div class="card" style="padding:16px">
+          <div class="muted" style="font-size:14px">최근 활동 스냅샷</div>
+          <ul class="muted" style="padding-left:20px;margin:8px 0 0">
+            <li>정기 급식 및 공연봉사 진행</li>
+            <li>지역 기업·기관과 협력 MOU 체결</li>
+            <li>백두한라예술단 지역 축제 공연 참여</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 설립취지 -->
+  <section id="mission" class="section">
+    <div class="container grid grid-2">
+      <div class="card" style="padding:16px">
+        <h3>설립취지·목적</h3>
+        <p class="muted">북한이탈주민이 지역사회에 주체적으로 참여하고 자립적으로 생활할 수 있도록 돕기 위해 설립되었습니다. 차별적 구조를 개선하고 당사자의 역량강화와 사회통합에 기여합니다.</p>
+      </div>
+      <div class="card" style="padding:16px">
+        <div><span class="btn" style="margin-right:6px">자립생활(IL)</span><span class="btn" style="margin-right:6px">권익옹호</span><span class="btn">리더십 강화</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 주요 사업 -->
+  <section id="programs" class="section">
+    <div class="container">
+      <h3>주요 사업</h3>
+      <div class="grid grid-3" style="margin-top:16px">
+        <div class="card" style="padding:16px"><strong>자립생활기술(IL) 교육</strong><p class="muted">동료상담·생활기술·권리교육 등 맞춤형 커리큘럼으로 자립역량 강화.</p></div>
+        <div class="card" style="padding:16px"><strong>동료상담가 양성/파견</strong><p class="muted">당사자 중심의 동료상담가를 교육하고 지역 기관에 파견.</p></div>
+        <div class="card" style="padding:16px"><strong>권익옹호·정책 제안</strong><p class="muted">생활·고용·교육·문화 접근성 개선을 위한 캠페인과 제안.</p></div>
+        <div class="card" style="padding:16px"><strong>문화·예술단 운영</strong><p class="muted">백두한라예술단 공연·축제 참여로 지역 화합 도모.</p></div>
+        <div class="card" style="padding:16px"><strong>취업·창업 연계</strong><p class="muted">지역 기업 MOU 기반 일경험·일자리 연계, 후원 네트워크 확장.</p></div>
+        <div class="card" style="padding:16px"><strong>지역 봉사·나눔</strong><p class="muted">정기 급식 봉사, 생활물품 지원 등 나눔 활동.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 영상 & 홍보자료 -->
+  <section id="media" class="section">
+    <div class="container grid grid-2">
+      <article class="card" style="padding:16px">
+        <div class="muted" style="font-size:13px">영상보기</div>
+        <h3 style="margin-top:4px">최신 영상</h3>
+        <div style="position:relative;padding-top:56.25%;margin-top:8px">
+          <iframe id="ytPlayer" title="YouTube 최신 업로드" style="position:absolute;inset:0;width:100%;height:100%;border:0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <a id="ytMore" class="btn" style="margin-top:10px" href="https://www.youtube.com/@choshaaaa/videos" target="_blank" rel="noreferrer">채널에서 더 보기</a>
+      </article>
+
+      <article class="card" style="padding:16px">
+        <div class="muted" style="font-size:13px">홍보자료</div>
+        <h3 style="margin-top:4px">블로그 최신 글</h3>
+        <div id="blogList" class="post-list"></div>
+        <a class="btn primary" style="margin-top:8px" href="https://blog.naver.com/mktstory" target="_blank" rel="noreferrer">홍보자료 바로가기</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- 기부 정보 -->
+  <section id="donation" class="section">
+    <div class="container grid grid-2">
+      <div class="card" style="padding:16px">
+        <h3>기부 정보</h3>
+        <p class="muted">아래 예시는 가안입니다. 실제 정보로 교체해 드리겠습니다.</p>
+        <ul style="padding-left:20px">
+          <li><strong>예금주</strong>: (사)백두한라협회</li>
+          <li><strong>은행</strong>: ○○은행</li>
+          <li><strong>계좌번호</strong>: 000-0000-000000 (예시)</li>
+          <li><strong>후원문의</strong>: donate@baekduhalla.org (예시)</li>
+        </ul>
+        <p class="muted" style="margin-top:10px;font-size:14px">기부금은 북한이탈주민의 자립생활 교육, 동료상담, 문화·예술단 운영, 긴급 생계지원 등에 사용됩니다. 연말정산용 기부금 영수증 발급 가능(지정기부금 단체 해당 시).</p>
+      </div>
+      <div class="card" style="padding:16px">
+        <h3>투명성 원칙</h3>
+        <ul style="padding-left:20px">
+          <li>연 1회 이상 <strong>사업·재정 보고</strong> 공개</li>
+          <li>후원자 대상 <strong>뉴스레터</strong> 발송(분기)</li>
+          <li>지정기탁 시 <strong>용도 지정</strong> 집행</li>
+        </ul>
+        <p class="muted" style="font-size:14px">* 필요 시 연차보고서 PDF 링크를 추가합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 연락처 -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="card" style="padding:16px">
+        <h3>연락처</h3>
+        <p class="muted">이메일: <strong>info@baekduhalla.org</strong> (예시) · 주소: 대전광역시 ○○구 ○○로 00 (예시)</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <small class="muted">© <span id="y"></span> 사단법인 백두한라협회 · Baekdu–Halla Association</small>
+    <small class="muted">제작: Hive Partners</small>
+  </div>
+</footer>
+
+<script>
+  // ========= 설정값: 아래 2개만 바꾸면 됩니다 =========
+  const YOUR_YOUTUBE_API_KEY = "YOUR_YOUTUBE_API_KEY"; // Google Cloud Console에서 발급
+  const YOUR_CHANNEL_ID = "YOUR_CHANNEL_ID";           // 예: UCxxxxxxxxxxxxxxxx (choshaaaa 채널의 ID)
+  // ================================================
+
+  // 연도 표시
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // 1) YouTube 최신 업로드(1개) 로드
+  async function loadLatestYouTube() {
     const iframe = document.getElementById('ytPlayer');
     try {
-      const res = await fetch(`${PROXY_BASE}/youtube-latest?channelId=${encodeURIComponent(CHANNEL_ID)}&maxResults=1`);
+      const url = new URL('https://www.googleapis.com/youtube/v3/search');
+      url.searchParams.set('part', 'snippet');
+      url.searchParams.set('channelId', YOUR_CHANNEL_ID);
+      url.searchParams.set('order', 'date');
+      url.searchParams.set('maxResults', '1');
+      url.searchParams.set('type', 'video');
+      url.searchParams.set('key', YOUR_YOUTUBE_API_KEY);
+
+      const res = await fetch(url.toString());
+      if (!res.ok) throw new Error('YouTube API 오류');
       const data = await res.json();
       const item = (data.items || [])[0];
-      if (!item?.embedUrl) throw new Error("no video");
-      iframe.src = item.embedUrl; // 최신 영상 삽입
-      // (선택) 썸네일/제목 등을 화면에 더 노출하려면 item.title, item.thumbnail 사용
+      if (!item) throw new Error('영상 없음');
+
+      const vid = item.id.videoId;
+      iframe.src = `https://www.youtube.com/embed/${vid}`;
     } catch (e) {
+      // 실패 시: 채널 페이지 링크만 유지
       iframe.outerHTML = '<div class="muted" style="padding:16px;border:1px dashed var(--line);border-radius:12px;text-align:center">최신 영상을 불러오지 못했습니다. 아래 버튼으로 채널에서 확인하세요.</div>';
       console.warn(e);
     }
   }
 
-  // ===== 네이버 블로그 최신 글 (프록시 RSS → 클라이언트에서 XML 파싱) =====
-  async function loadNaverBlogLatestFromProxy(maxItems = 4) {
+  // 2) 네이버 블로그 최신 글 로드 (RSS → XML 파싱, 실패 시 rss2json 백업)
+  async function loadNaverBlogLatest(maxItems = 5) {
     const list = document.getElementById('blogList');
+    const RSS = 'https://rss.blog.naver.com/mktstory.xml';
+
+    async function tryXmlDirect() {
+      const res = await fetch(RSS);
+      if (!res.ok) throw new Error('RSS fetch 실패');
+      const xml = await res.text();
+      const doc = new DOMParser().parseFromString(xml, 'application/xml');
+      const items = [...doc.querySelectorAll('item')].slice(0, maxItems);
+      return items.map(it => ({
+        title: it.querySelector('title')?.textContent?.trim(),
+        link: it.querySelector('link')?.textContent?.trim(),
+        date: it.querySelector('pubDate')?.textContent?.trim()
+      }));
+    }
+
+    async function tryRss2Json() {
+      const url = new URL('https://api.rss2json.com/v1/api.json');
+      url.searchParams.set('rss_url', RSS);
+      const res = await fetch(url.toString());
+      if (!res.ok) throw new Error('rss2json 실패');
+      const data = await res.json();
+      const items = (data.items || []).slice(0, maxItems);
+      return items.map(it => ({ title: it.title, link: it.link, date: it.pubDate }));
+    }
+
     try {
-      const res = await fetch(`${PROXY_BASE}/naver-rss?id=mktstory`);
-      const xmlText = await res.text();
-      const doc = new DOMParser().parseFromString(xmlText, "application/xml");
-      const items = [...doc.querySelectorAll("item")].slice(0, maxItems);
-      list.innerHTML = items.map(it => {
-        const title = it.querySelector("title")?.textContent?.trim() || "제목 없음";
-        const link  = it.querySelector("link")?.textContent?.trim() || "#";
-        const date  = it.querySelector("pubDate")?.textContent || "";
-        const dstr  = date ? new Date(date).toLocaleDateString() : "";
-        return `<a class="post" href="${link}" target="_blank" rel="noreferrer">
-                  <strong>${title}</strong><br>
-                  <span class="muted" style="font-size:13px">${dstr}</span>
-                </a>`;
-      }).join("");
+      let posts;
+      try {
+        posts = await tryXmlDirect();        // 1차: 직접
+      } catch {
+        posts = await tryRss2Json();         // 2차: 우회
+      }
+      list.innerHTML = posts.map(p => `
+        <a class="post" href="${p.link}" target="_blank" rel="noreferrer">
+          <strong>${p.title}</strong><br>
+          <span class="muted" style="font-size:13px">${new Date(p.date).toLocaleDateString()}</span>
+        </a>
+      `).join('');
     } catch (e) {
       list.innerHTML = '<div class="muted">최신 글을 불러오지 못했습니다. 상단 버튼으로 이동해 확인해주세요.</div>';
       console.warn(e);
     }
   }
 
-  loadLatestYouTubeViaProxy();
-  loadNaverBlogLatestFromProxy(4);
+  loadLatestYouTube();
+  loadNaverBlogLatest(4);
 </script>
+</body>
+</html>
