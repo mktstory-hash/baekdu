@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>(사)백두한라협회 | Baekdu–Halla Association</title>
-  <meta name="description" content="북한이탈주민 자립·역량강화 및 지역사회 화합을 위한 (사)백두한라협회 공식 원페이지 홈페이지" />
+  <meta name="description" content="북한이탈주민의 자립·역량강화 및 지역사회 화합을 위한 (사)백두한라협회 공식 원페이지 홈페이지" />
   <meta name="color-scheme" content="light dark" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2716%27 fill=%27%23000%27/%3E%3Ctext x=%2750%25%27 y=%2757%25%27 font-size=%2752%27 text-anchor=%27middle%27 fill=%27%23fff%27 font-family=%27Arial,Helvetica,sans-serif%27%3EBH%3C/text%3E%3C/svg%3E" />
   <style>
@@ -35,16 +35,22 @@
     h3{font-size:22px}
     .muted{color:var(--muted)}
     .pill{display:inline-block;padding:.25rem .6rem;border-radius:999px;background:var(--fg);color:var(--bg);font-weight:600}
-    .hero{padding:64px 0}
+    .hero{padding:64px 0;position:relative;overflow:hidden}
+    .hero .bgimg{
+      position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+      opacity:.15;filter:saturate(0.9) contrast(1.05)
+    }
+    .hero .overlay{position:relative}
     .section{padding:64px 0;border-top:1px solid var(--line)}
     .list{margin:0;padding-left:20px}
     .list li{margin:.4rem 0}
     .tag{display:inline-block;font-size:13px;border:1px solid var(--line);border-radius:12px;padding:.25rem .6rem;margin:.25rem .25rem 0 0}
-    .input, .textarea{width:100%;padding:.7rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--fg)}
-    .textarea{min-height:120px;resize:vertical}
     footer{border-top:1px solid var(--line);padding:40px 0}
     .skip{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
     .skip:focus{left:16px;top:16px;width:auto;height:auto;background:var(--accent);color:var(--bg);padding:.5rem .75rem;border-radius:10px}
+    .gallery{display:grid;gap:14px;grid-template-columns:repeat(3,1fr)}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+    @media(max-width:720px){.gallery{grid-template-columns:repeat(2,1fr)}}
   </style>
 </head>
 <body>
@@ -60,7 +66,8 @@
       <a href="#about">협회 소개</a>
       <a href="#mission">설립취지·목적</a>
       <a href="#programs">주요 사업</a>
-      <a href="#news">소식</a>
+      <a href="#media">영상·홍보자료</a>
+      <a href="#donation">기부 정보</a>
       <a href="#contact">연락처</a>
     </nav>
   </div>
@@ -69,43 +76,48 @@
 <main id="main">
   <!-- Hero -->
   <section class="hero">
-    <div class="container grid grid-2" style="align-items:center">
-      <div>
-        <h2>새터민과 지역사회가 함께 여는 <span class="pill">자립·화합</span></h2>
-        <p class="muted" style="margin-top:12px">
-          백두에서 한라까지, 남과 북을 잇는 교량으로서 북한이탈주민의 자립과 역량강화, 지역사회 참여와 화합을 촉진합니다.
-        </p>
-        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn primary" href="#mission">설립취지 보기</a>
-          <a class="btn" href="#programs">사업 살펴보기</a>
+    <div class="bgimg" aria-hidden="true"></div>
+    <div class="overlay">
+      <div class="container grid grid-2" style="align-items:center">
+        <div>
+          <h2>북한이탈주민과 지역사회가 함께 여는 <span class="pill">자립·화합</span></h2>
+          <p class="muted" style="margin-top:12px">
+            백두에서 한라까지, 남과 북을 잇는 교량으로서 북한이탈주민의 자립과 역량강화, 지역사회 참여와 화합을 촉진합니다.
+          </p>
+          <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn primary" href="#mission">설립취지 보기</a>
+            <a class="btn" href="#programs">사업 살펴보기</a>
+          </div>
         </div>
-        <p class="muted" style="margin-top:10px;font-size:13px">
-          공식 홈페이지(가칭): <a class="muted" style="text-decoration:underline" href="https://www.xn--hu1b53di9enx5a5zadv.org/" target="_blank" rel="noreferrer">백두한라협회.org</a>
-        </p>
-      </div>
-      <div>
-        <div class="card" style="padding:20px">
-          <h3>핵심 가치</h3>
-          <div style="margin-top:12px;display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))">
-            <div class="card" style="padding:12px"><strong>자립(IL)</strong> 촉진</div>
-            <div class="card" style="padding:12px"><strong>권익</strong> 옹호</div>
-            <div class="card" style="padding:12px"><strong>역량</strong> 강화</div>
-            <div class="card" style="padding:12px"><strong>지역사회</strong> 화합</div>
+        <div>
+          <div class="card" style="padding:20px">
+            <h3>핵심 가치</h3>
+            <div style="margin-top:12px;display:grid;gap:10px;grid-template-columns:repeat(2,minmax(0,1fr))">
+              <div class="card" style="padding:12px"><strong>자립(IL)</strong> 촉진</div>
+              <div class="card" style="padding:12px"><strong>권익</strong> 옹호</div>
+              <div class="card" style="padding:12px"><strong>역량</strong> 강화</div>
+              <div class="card" style="padding:12px"><strong>지역사회</strong> 화합</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
+  <!-- 소개 -->
   <section id="about" class="section">
     <div class="container grid grid-2">
       <div>
         <h3>협회 소개</h3>
         <p class="muted" style="margin-top:10px">
-          (사)백두한라협회는 북한이탈주민(새터민)이 지역사회에서 자립적으로 생활하고 당당한 시민으로 성장할 수 있도록
+          (사)백두한라협회는 북한이탈주민이 지역사회에서 자립적으로 생활하고 당당한 시민으로 성장할 수 있도록
           교육·상담·문화·일자리 연계 등 다양한 프로그램을 운영하는 비영리 민간단체입니다.
         </p>
+        <div class="gallery" style="margin-top:14px">
+          <img src="https://images.unsplash.com/photo-1520975898057-3b1c9d0d0b82?q=80&w=800&auto=format&fit=crop" alt="지역 봉사활동 모습(예시 이미지)">
+          <img src="https://images.unsplash.com/photo-1515165562835-c3b8c8a0b4be?q=80&w=800&auto=format&fit=crop" alt="교육 프로그램 현장(예시 이미지)">
+          <img src="https://images.unsplash.com/photo-1515162305286-9cf0a3b0b0f0?q=80&w=800&auto=format&fit=crop" alt="문화 교류 행사(예시 이미지)">
+        </div>
       </div>
       <aside>
         <div class="card" style="padding:16px">
@@ -120,7 +132,7 @@
     </div>
   </section>
 
-  <!-- Mission -->
+  <!-- 설립취지 -->
   <section id="mission" class="section">
     <div class="container grid grid-2">
       <div class="card" style="padding:16px">
@@ -141,7 +153,7 @@
     </div>
   </section>
 
-  <!-- Programs -->
+  <!-- 주요 사업 -->
   <section id="programs" class="section">
     <div class="container">
       <h3>주요 사업</h3>
@@ -174,47 +186,71 @@
     </div>
   </section>
 
-  <!-- News -->
-  <section id="news" class="section">
+  <!-- 영상 & 홍보자료 -->
+  <section id="media" class="section">
     <div class="container grid grid-2">
       <article class="card" style="padding:16px">
-        <div class="muted" style="font-size:13px">최근</div>
-        <h3 style="margin-top:4px">LG전자 대전 둔산점과 업무협약</h3>
-        <p class="muted">북한이탈주민 지원사업 협력을 위한 지역 기업 파트너십을 체결했습니다.</p>
-        <a class="btn" style="margin-top:8px" href="https://www.nexttimes.kr/news/articleView.html?idxno=4005" target="_blank" rel="noreferrer">보도자료 보기</a>
+        <div class="muted" style="font-size:13px">영상보기</div>
+        <h3 style="margin-top:4px">최신 영상</h3>
+        <!-- 유튜브 채널 최신 업로드 목록 임베드 (채널 핸들 기반, 실패 시 아래 링크 버튼으로 이동) -->
+        <div style="position:relative;padding-top:56.25%;margin-top:8px">
+          <iframe
+            title="YouTube 최신 업로드"
+            src="https://www.youtube.com/embed?listType=user_uploads&list=choshaaaa"
+            style="position:absolute;inset:0;width:100%;height:100%;border:0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <a class="btn" style="margin-top:10px" href="https://www.youtube.com/@choshaaaa/videos" target="_blank" rel="noreferrer">채널에서 더 보기</a>
       </article>
       <article class="card" style="padding:16px">
-        <div class="muted" style="font-size:13px">최근</div>
-        <h3 style="margin-top:4px">지역 축제 참여 — 백두한라예술단</h3>
-        <p class="muted">시민과 함께하는 노래자랑 등 지역 문화행사에 참여했습니다.</p>
-        <a class="btn" style="margin-top:8px" href="https://www.youtube.com/watch?v=Mdolc4gcXDc" target="_blank" rel="noreferrer">영상 보기</a>
+        <div class="muted" style="font-size:13px">홍보자료</div>
+        <h3 style="margin-top:4px">블로그 모아보기</h3>
+        <p class="muted">보도자료·활동 스토리를 블로그로 정리합니다.</p>
+        <a class="btn primary" style="margin-top:8px" href="https://blog.naver.com/mktstory" target="_blank" rel="noreferrer">홍보자료 바로가기</a>
       </article>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section">
+  <!-- 기부 정보 -->
+  <section id="donation" class="section">
     <div class="container grid grid-2">
+      <div class="card" style="padding:16px">
+        <h3>기부 정보</h3>
+        <p class="muted">아래 예시는 가안입니다. 실제 정보로 교체해 드리겠습니다.</p>
+        <ul class="list">
+          <li><strong>예금주</strong>: (사)백두한라협회</li>
+          <li><strong>은행</strong>: ○○은행</li>
+          <li><strong>계좌번호</strong>: 000-0000-000000 (예시)</li>
+          <li><strong>후원문의</strong>: donate@baekduhalla.org (예시)</li>
+        </ul>
+        <p class="muted" style="margin-top:10px;font-size:14px">
+          기부금은 북한이탈주민의 자립생활 교육, 동료상담, 문화·예술단 운영, 긴급 생계지원 등에 사용됩니다.
+          연말정산용 기부금 영수증 발급 가능(지정기부금 단체 해당 시).
+        </p>
+      </div>
+      <div class="card" style="padding:16px">
+        <h3>투명성 원칙</h3>
+        <ul class="list">
+          <li>연 1회 이상 <strong>사업·재정 보고</strong> 공개</li>
+          <li>후원자 대상 <strong>뉴스레터</strong> 발송(분기)</li>
+          <li>지정기탁 시 <strong>용도 지정</strong> 집행</li>
+        </ul>
+        <p class="muted" style="margin-top:8px;font-size:14px">* 필요 시 연차보고서 PDF 링크를 추가합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 연락처 -->
+  <section id="contact" class="section">
+    <div class="container">
       <div class="card" style="padding:16px">
         <h3>연락처</h3>
         <p class="muted">
-          이메일: <strong>info@baekduhalla.org</strong> (예시)<br />
-          주소: 대전광역시 ○○구 ○○로 00 (예시)
+          이메일: <strong>info@baekduhalla.org</strong> (예시) · 주소: 대전광역시 ○○구 ○○로 00 (예시)
         </p>
-        <p class="muted" style="font-size:13px">※ 실제 연락처·주소는 확인 후 업데이트하세요.</p>
-      </div>
-      <div class="card" style="padding:16px">
-        <h3>문의하기 (데모)</h3>
-        <form onsubmit="event.preventDefault();alert('문의가 접수되었습니다. 실제 전송 연동 필요');">
-          <label class="muted" for="name">이름</label>
-          <input id="name" class="input" placeholder="홍길동" />
-          <label class="muted" for="email" style="margin-top:8px;display:block">이메일</label>
-          <input id="email" type="email" class="input" placeholder="you@example.com" />
-          <label class="muted" for="msg" style="margin-top:8px;display:block">문의 내용</label>
-          <textarea id="msg" class="textarea" placeholder="내용을 입력하세요"></textarea>
-          <button class="btn primary" type="submit" style="margin-top:10px">문의 접수</button>
-          <p class="muted" style="font-size:12px;margin-top:6px">* 데모 폼 — 백엔드/Google Forms 연동 필요</p>
-        </form>
+        <p class="muted" style="font-size:13px">※ 실제 연락처·주소를 알려주시면 즉시 반영하겠습니다.</p>
       </div>
     </div>
   </section>
@@ -228,8 +264,8 @@
 </footer>
 
 <script>
+  // 연도
   document.getElementById('y').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
-
